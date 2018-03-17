@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j" 
+	xmlns:rich="http://richfaces.org/rich"
+	>
+
+<ui:composition template="WEB-INF/templetes/second.xhtml">
+	<ui:define name="title">profile</ui:define>
+	<ui:define name="head">
+		<style type="text/css">
+				.firstCol {width:150px;font-weight:bold;font-style:italic}
+				.secondCol{width:250px;}
+		</style>
+		<script type="text/javascript">
+			function showPicUpdateOption(){
+				document.getElementById("changePic").style.visibility='visible';
+			}
+			function hidePicUpdateOption(){
+				document.getElementById("changePic").style.visibility='hidden';
+			}
+		</script>
+	</ui:define>
+	
+	<ui:define name="welcome">
+				<a onmouseover="showPicUpdateOption()" id="changePic" href="uploadpic.xhtml" target="_blank" style="visibility:hidden;position:absolute;top:200px;left:250px;z-index:10;background-color:blue;color:white;font-weight:bold;line-height:15px;;height:15px;width:90px;text-align:center;text-decoration: none">Change Image</a>
+				<img src="profilePics/${sessionScope['logid']}.jpg" onmouseover="showPicUpdateOption()" onmouseout="hidePicUpdateOption()" style="z-index: 1"/>
+		       	<div class="welcome">Welcome ${sessionScope['logname']}</div>       	
+	</ui:define>
+	<ui:define name="content">
+	    <div class="article">
+			  <div style="width:80;float:left">
+			  <div class="clr"></div>
+			  		<h:panelGrid id="viewBox" columns="2" border="0" columnClasses="firstCol,secondCol" cellpadding="7" style="color:black;font-size:11pt">
+			  			<h:outputText value="Address:"/>
+			  			<h:outputText value="#{profileBean.profile.address}"/>
+			  			
+			  			<h:outputText value="Relationship Status:"/>
+			  			<h:outputText value="#{profileBean.profile.relationship_Status}"/>
+			  			
+			  			<h:outputText value="Date of Birth:"/>
+			  			<h:outputText value="#{profileBean.registration.dob}"> <f:converter converterId="date"/></h:outputText>
+			  			
+			  			<h:outputText value="Gender:"/>
+			  			<h:outputText value="#{profileBean.registration.gender}"/>
+			  			
+			  			<h:outputText value="Contact Number:"/>
+			  			<h:outputText value="#{profileBean.profile.contact_Info}"/>
+			  			
+			  			<h:outputText value="Languages:"/>
+			  			<h:outputText value="#{profileBean.profile.languages}"/>
+			  			
+			  			<h:outputText value="City:"/>
+			  			<h:outputText value="#{profileBean.profile.city}"/>
+			  			
+			  			<h:outputText value="Home Town:"/>
+			  			<h:outputText value="#{profileBean.profile.home_Town}"/>
+			  			
+			  			<h:outputText value="Occupation:"/>
+			  			<h:outputText value="#{profileBean.profile.occupation}"/>
+			  			
+			  			<h:outputText value="College:"/>
+			  			<h:outputText value="#{profileBean.profile.college}"/>
+			  			
+			  			<h:outputText value="University:"/>
+			  			<h:outputText value="#{profileBean.profile.university}"/>
+			  			
+			  			<h:outputText value="School:"/>
+			  			<h:outputText value="#{profileBean.profile.school}"/>
+			  			
+			  			<h:outputText value="Hobbies:"/>
+			  			<h:outputText value="#{profileBean.profile.hobbies}"/>
+			  			
+			  			<h:outputText value="Siblings:"/>
+			  			<h:outputText value="#{profileBean.profile.siblings}"/>
+			  			
+			  			<h:outputText value="Religion:"/>
+			  			<h:outputText value="#{profileBean.profile.religion}"/>
+			  			
+			  			<h:outputText value="Political:"/>
+			  			<h:outputText value="#{profileBean.profile.political}"/>
+			  			<h:outputText value=""/>
+			  			<h:commandButton id="btn_update" value="Update" action="update"/>
+			  		</h:panelGrid>  
+			  		
+			  	
+			  		
+			  		
+			    <div class="clr"></div>
+			  </div>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>
+
+

@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j" 
+	xmlns:rich="http://richfaces.org/rich"
+	>
+
+<ui:composition template="WEB-INF/templetes/second.xhtml">
+	<ui:define name="title">profile</ui:define>
+	<ui:define name="head">
+		<style type="text/css">
+				.firstCol {width:150px;font-weight:bold;font-style:italic}
+				.secondCol{width:250px;}
+		</style>
+	</ui:define>
+	
+	<ui:define name="welcome">
+				<img src="profilePics/${sessionScope['logid']}.jpg"/>
+		       	<div class="welcome">Welcome ${sessionScope['logname']}</div>       	
+	</ui:define>
+	<ui:define name="content">
+	    <div class="article">
+			  <div style="width:80;float:left">
+			  <div class="clr"></div>
+			  		
+			  		
+			  		
+			    <div class="clr"></div>
+			  </div>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>
+
+

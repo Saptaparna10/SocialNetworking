@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j" 
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	>
+
+<ui:composition template="WEB-INF/templetes/second.xhtml">
+	<ui:define name="welcome">
+				<img src="profilePics/${sessionScope['logid']}.jpg"/>
+		       	<div class="welcome">Welcome ${sessionScope['logname']}</div>       	
+	</ui:define>
+	<ui:define name="content">
+  		<ui:repeat var="s" value="#{scrapBean.scrapDetails}" >
+	  		<div style="width:600px;margin-top:15px;">
+	  			<h:graphicImage value="profilePics/#{s.email_Id}.jpg" style="width:65px;height:70px;float:left"/>
+	  			<div style="float:left;padding:0px;width:450px;background-color:#a1cde8;color:#0c2331;">
+	  					<div style="height:15px;background-color:#549bc7;padding:15px;text-transform: capitalize;">
+	  						<h:outputText value="#{registrationBean.getFullName(s.email_Id)}" style="font-weight:bold;color:black;font-style:italic;width:300px;display:block;float:left"/>
+	  						<span style="display:block;float:right"><h:outputText value="#{s.scrap_Date}"><f:convertDateTime pattern="dd-MMM-YYYY"/></h:outputText></span>
+	  					</div>
+	  					<br/>
+	  					<div style="padding-left:15px;padding-right:15px;text-align: justify;">
+	  						<h:outputText value="#{s.scrap}"/>
+	  					</div>	
+	  					<div style="text-align: right;padding:10px;">
+	  						<h:commandLink id="cmdReply" style="float:right;background:url(images/reply.gif) no-repeat center;width:88px;height:29px;display:block" actionListener="#{scrapBean.showReplyBox}"></h:commandLink>
+	  						<h:commandLink id="cmdDelete" style="float:right;padding-left:30px;background:url(images/delete.gif) no-repeat center;width:88px;height:29px;display:block" action="#{scrapBean.removeScrap(s.scrap_Id)}"></h:commandLink>
+	  						<div class="clr"></div>
+	  					</div>	
+	  					
+	  					<h:panelGroup style="padding:10px;" rendered="#{scrapBean.showReply}">
+	  						  <div style="font-weight: bold;color:black">Write Message</div>
+							  <h:inputTextarea id="msg_box" value="#{scrapBean.scrap.scrap}" cols="70" style="width:430px" rows="5"/><br/>
+							  <h:commandButton id="btn_post" value="POST" action="#{scrapBean.rplyMsg(s.email_Id)}" style="margin-top:5px;"/>		
+	  					</h:panelGroup>
+	  			</div>
+	  		</div>
+	  	</ui:repeat>	
+	  </ui:define>
+</ui:composition>
+</html>
+
+

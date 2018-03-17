@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j" 
+	xmlns:rich="http://richfaces.org/rich"
+	>
+
+<ui:composition template="WEB-INF/templetes/second.xhtml">
+	<ui:define name="title">profile</ui:define>
+	<ui:define name="header">
+		<style type="text/css">
+			.firstCol {width:150px;font-weight:bold}
+			.secondCol{width:250px;}
+		</style>
+	</ui:define>
+	<ui:define name="welcome">
+				<img src="profilePics/${sessionScope['friendId']}.jpg"/>
+		       	<div class="welcome">${sessionScope['fname']} ${sessionScope['lname']}</div>
+		       	
+	</ui:define>
+	<ui:define name="content">
+	    <div class="article">
+			  <div style="width:100%;float:left">
+			  <div class="clr"></div>
+			  
+			  <div style="font-weight: bold;color:black">Write Message</div>
+			  <h:inputTextarea id="msg_box" value="#{scrapBean.scrap.scrap}" cols="70" rows="5"/><br/>
+			  <h:commandButton id="btn_post" value="POST" action="#{scrapBean.postMsg()}"/>			
+			  			  
+			  
+			  
+			  <div style="font-weight: bold;color:green;margin-top:20px"><h:outputText value="#{friendsBean.message}"/></div>
+			  		<h:panelGrid id="viewBox" columns="2" border="0" columnClasses="firstCol,secondCol" cellpadding="7" style="color:black;font-size:11pt">
+			  			<h:outputText value="Address:"/>
+			  			<h:outputText value="#{profileBean.profile.address}"/>
+			  			
+			  			<h:outputText value="Relationship Status:"/>
+			  			<h:outputText value="#{profileBean.profile.relationship_Status}"/>
+			  			
+			  			<h:outputText value="Date of Birth:"/>
+			  			<h:outputText value="#{profileBean.registration.dob}"><f:convertDateTime dateStyle="full"/></h:outputText>
+			  			
+			  			<h:outputText value="Gender:"/>
+			  			<h:outputText value="#{profileBean.registration.gender}"/>
+			  			
+			  			<h:outputText value="Contact Number:"/>
+			  			<h:outputText value="#{profileBean.profile.contact_Info}"/>
+			  			
+			  			<h:outputText value="Languages:"/>
+			  			<h:outputText value="#{profileBean.profile.languages}"/>
+			  			
+			  			<h:outputText value="City:"/>
+			  			<h:outputText value="#{profileBean.profile.city}"/>
+			  			
+			  			<h:outputText value="Home Town:"/>
+			  			<h:outputText value="#{profileBean.profile.home_Town}"/>
+			  			
+			  			<h:outputText value="Occupation:"/>
+			  			<h:outputText value="#{profileBean.profile.occupation}"/>
+			  			
+                        <h:outputText value=""/>      			  			
+			  			<h:commandButton immediate="true" rendered="#{!(friendsBean.isFriendRequestSend(profileBean.registration.email_Id) || friendsBean.isAlreadyFriend(profileBean.registration.email_Id))}" value="Add Friend" action="#{friendsBean.sendFriendRequest(profileBean.registration.email_Id,profileBean.registration.first_Name,_Name,profileBean.registration.last_Name)}" />
+			  		
+			  		</h:panelGrid>  
+			  			
+			  		
+			  	
+			  		
+			  		
+			    <div class="clr"></div>
+			  </div>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>
+
+

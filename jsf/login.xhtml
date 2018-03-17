@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="WEB-INF/templetes/first.xhtml">
+	<ui:define name="title">Login</ui:define>
+	<ui:define name="content">
+	    <div class="article">
+			  <div style="width:300px;float:right">
+			  <h2><span>User login</span></h2>
+			  <div class="clr"></div>
+			  	<f:view>
+			  		<h:form>
+			  			<h:panelGrid columns="3">
+			  				<h:outputText value="Email ID:"/>
+			  				<h:inputText id="email" value="#{registrationBean.registration.email_Id}" required="true" requiredMessage="Email can not be blank"/>
+			  				<h:message for="email"/>
+			  				
+			  				<h:outputText value="Password:"/>
+			  				<h:inputSecret id="password" value="#{registrationBean.registration.password}" required="true" requiredMessage="Password can not be blank"/>
+			  				<h:message for="password"/>
+			  				
+			  				<h:outputText value=""/>
+			  				<h:commandButton id="btnLogin" value="Login" action="#{registrationBean.authenticate}"/>
+			  				<h:outputText value=""/>
+			  				
+			  				<h:outputText value=""/>
+			  				<h:outputText value="#{registrationBean.message}" style="color:red;font-weight:bold"/>  				
+			  				<h:outputText value=""/>
+			  				
+			  				<h:outputText value=""/>
+			  				<h:commandLink id="logup" value="New User?" action="register" immediate="true"/>
+			  				<h:outputText value=""/>
+			  				
+			  				<h:outputText value=""/>
+			  				<h:commandLink id="forgotpassword" value="Forgot Password??" action="forgotPass"  rendered="#{registrationBean.invalidUser}" immediate="true"/>
+			  				<h:outputText value=""/>
+			  								
+			  			</h:panelGrid>
+			  		</h:form>
+			  		
+			  	</f:view>	  
+			    <div class="clr"></div>
+			  </div>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>
+
+

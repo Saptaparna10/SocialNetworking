@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j" 
+	xmlns:rich="http://richfaces.org/rich"
+	>
+
+<ui:composition template="WEB-INF/templetes/second.xhtml">
+	<ui:define name="title">profile</ui:define>
+	<ui:define name="header">
+		<style type="text/css">
+			.firstCol {width:150px;font-weight:bold}
+			.secondCol{width:250px;}
+		</style>
+	</ui:define>
+	<ui:define name="sidebar"></ui:define>
+	<ui:define name="welcome">
+				<img src="profilePics/${sessionScope['logid']}.jpg"/>
+		       	<div class="welcome">Welcome ${sessionScope['logname']}</div>       	
+	</ui:define>
+	<ui:define name="content">
+	    <div class="article">
+			  <div style="width:100%;float:left">
+			  <div class="clr"></div>
+			  		
+			  		
+			  		<h:panelGrid id="updateBox" columns="2" border="0" columnClasses="firstCol,secondCol" cellpadding="7" style="color:black;font-size:11pt">
+			  			<h:outputText value="Address:"/>
+			  			<h:inputText value="#{profileBean.profile.address}"/>
+			  			
+			  			<h:outputText value="Relationship Status:"/>
+			  			<h:selectOneMenu value="#{profileBean.profile.relationship_Status}">
+			  				
+			  			    <f:selectItem itemValue="Single" itemLabel="Single"/>
+			  				<f:selectItem itemValue="Committed" itemLabel="Committed"/>
+			  				<f:selectItem itemValue="Complicated" itemLabel="Complicated"/>
+			  				<f:selectItem itemValue="Married" itemLabel="Married"/>
+			  				
+			  			</h:selectOneMenu>
+			  			
+			  			<h:outputText value="Date Of Birth"/>
+		  				<rich:calendar id="dob" value="#{profileBean.registration.dob}" datePattern="dd/MM/yyyy">
+		  					<f:convertDateTime pattern="dd/MM/yyyy"/>
+		  				</rich:calendar>
+			  			
+			  			<h:outputText value="Gender:" />
+		  				<h:selectOneRadio id="gen" value="#{profileBean.registration.gender}">		  				
+		  					<f:selectItem  itemLabel="Male" itemValue="Male" />
+		  					<f:selectItem   itemLabel="Female" itemValue="Female"/>
+		  				</h:selectOneRadio>
+			  			
+			  			<h:outputText value="Contact Number:"/>
+			  			<h:inputText value="#{profileBean.profile.contact_Info}"/>
+			  			
+			  			<h:outputText value="Languages Known:"/>
+			  			
+			  			<h:inputText value="#{profileBean.profile.languages}"/>
+			  			
+			  			<h:outputText value="City:"/>
+			  			<h:selectOneMenu value="#{profileBean.profile.city}">
+			  				
+			  			    <f:selectItem itemValue="Kolkata" itemLabel="Kolkata"/>
+			  				<f:selectItem itemValue="Delhi" itemLabel="Delhi"/>
+			  				<f:selectItem itemValue="Mumbai" itemLabel="Mumbai"/>
+			  				<f:selectItem itemValue="Chennai" itemLabel="Chennai"/>
+			  			    <f:selectItem itemValue="Bangalore" itemLabel="Bangalore"/>
+			  				<f:selectItem itemValue="Pune" itemLabel="Pune"/>
+			  				<f:selectItem itemValue="Hyderabad" itemLabel="Hyderabad"/>
+			  				
+			  				
+			  			</h:selectOneMenu>
+			  				
+			  			
+			  			<h:outputText value="Home Town:"/>
+			  			<h:inputText value="#{profileBean.profile.home_Town}"/>
+			  				
+			  		
+			  			
+			  			<h:outputText value="Occupation:"/>
+			  			<h:selectOneMenu value="#{profileBean.profile.occupation}">
+			  				
+			  			    <f:selectItem itemValue="Businessman" itemLabel="Businessman"/>
+			  				<f:selectItem itemValue="Engineer" itemLabel="Engineer"/>
+			  				<f:selectItem itemValue="Doctor" itemLabel="Doctor"/>
+			  				<f:selectItem itemValue="Police" itemLabel="Police"/>
+			  			    <f:selectItem itemValue="Student" itemLabel="Student"/>
+			  				<f:selectItem itemValue="Professor" itemLabel="Professor"/>
+			  				<f:selectItem itemValue="HomeMaker" itemLabel="HomeMaker"/>
+			  				
+			  				
+			  			</h:selectOneMenu>
+			  			
+			  			<h:outputText value="College:"/>
+			  			<h:inputText value="#{profileBean.profile.college}"/>
+			  			
+			  			<h:outputText value="University:"/>
+			  			<h:inputText value="#{profileBean.profile.university}"/>
+			  			
+			  			<h:outputText value="School:"/>
+			  			<h:inputText value="#{profileBean.profile.school}"/>
+			  			
+			  			<h:outputText value="Hobbies:"/>
+			  			<h:inputText value="#{profileBean.profile.hobbies}"/>
+			  			
+			  			<h:outputText value="Siblings:"/>
+			  			<h:inputText value="#{profileBean.profile.siblings}"/>
+			  			
+			  			<h:outputText value="Religion:"/>
+			  			<h:inputText value="#{profileBean.profile.religion}"/>
+			  			
+			  			<h:outputText value="Political:"/>
+			  			<h:selectOneMenu value="#{profileBean.profile.political}">
+			  				
+			  			    <f:selectItem itemValue="Yes" itemLabel="Yes"/>
+			  				<f:selectItem itemValue="No" itemLabel="No"/>
+			  				</h:selectOneMenu>
+			  			
+			  			<h:outputText value=""/>
+			  			<h:commandButton id="btn_save" value="Save" actionListener="#{profileBean.saveDetails}"/>
+			  		</h:panelGrid>  
+			  		
+			  		
+			    <div class="clr"></div>
+			  </div>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>
+
+

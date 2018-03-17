@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j" 
+	xmlns:rich="http://richfaces.org/rich"
+	>
+
+	<ui:composition template="WEB-INF/templetes/second.xhtml">
+		<ui:define name="title">profile</ui:define>
+		<ui:define name="head">
+			<style type="text/css">
+					.firstCol {width:150px;font-weight:bold;font-style:italic}
+					.secondCol{width:250px;}
+			</style>
+			
+		</ui:define>
+		
+		<ui:define name="welcome">
+					<a onmouseover="showPicUpdateOption()" id="changePic" href="uploadpic.xhtml" target="_blank" style="visibility:hidden;position:absolute;top:200px;left:250px;z-index:10;background-color:blue;color:white;font-weight:bold;line-height:15px;;height:15px;width:90px;text-align:center;text-decoration: none">Change Image</a>
+					<img src="profilePics/${sessionScope['logid']}.jpg" onmouseover="showPicUpdateOption()" onmouseout="hidePicUpdateOption()" style="z-index: 1"/>
+			       	<div class="welcome">Welcome ${sessionScope['logname']}</div>       	
+		</ui:define>
+		<ui:define name="content">
+		    
+		</ui:define>
+		
+		<ui:define name="sidebar">
+			<div style="height: 35px;width:250px;;background:url(images/flist_title_bg.jpg) repeat-x center;padding:10px;color:black;font-size:14pt">&nbsp;</div>
+	  		<ui:repeat var="a" value="#{albumBean.albumList}" >
+		  		<div style="width:100%;background:url(images/flist_bg.jpg) repeat-x center;height:70px;width:270px;margin-top:5px">
+		  			<h:graphicImage value="profilePics/#{a.email_Id}.jpg" style="width:60px;height:70px;float:left"/>	  			
+		  			<div style="float:left;padding-top:25px;padding-left:30px">
+		  			<h:commandLink value="#{a.album_Name}" style="font-weight:bold;color:black;font-style:italic;font-size:10pt;text-decoration:none;" />
+		  			</div>
+		  		</div>
+		  	</ui:repeat>	
+		  	
+		  	
+		  	
+		  	<h:panelGrid columns="2" width="100%" style="margin-top:20px;">
+		  		Album Name <h:inputText id="albumName" value="#{albumBean.album.album_Name}"/>
+		  		&nbsp;  <h:commandButton value="Create Album" actionListener="#{albumBean.addAlbum}"/>
+		  	</h:panelGrid>			
+		</ui:define>
+	
+	</ui:composition>
+</html>
+
+

@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j" 
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	>
+
+<ui:composition>
+
+		<div style="height: 35px;width:250px;;background:url(images/flist_title_bg.jpg) repeat-x center;padding:10px;color:black;font-size:14pt">&nbsp;</div>
+  		<ui:repeat var="r" value="#{friendsBean.friendList}" >
+	  		<div style="width:100%;background:url(images/flist_bg.jpg) repeat-x center;height:70px;width:270px;margin-top:5px">
+	  			<h:graphicImage value="profilePics/#{r.email_Id}.jpg" style="width:60px;height:70px;float:left"/>	  			
+	  			<div style="float:left;padding-top:25px;padding-left:30px">
+	  			<h:commandLink value="#{r.first_Name} #{r.last_Name}" style="font-weight:bold;color:black;font-style:italic;font-size:10pt;text-decoration:none;" action="#{searchFriendBean.showFriendProfile(r.email_Id,r.first_Name,r.last_Name)}"/>
+	  			</div>
+	  		</div>
+	  	</ui:repeat>
+	  
+	  	  
+</ui:composition>
+</html>
+
+

@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      >
+   <head><title>IGNORED</title></head>
+   <body>
+      <ui:composition>
+			<div class="menu_nav">
+				<ul>
+					   <li ><h:commandLink value="Home" action="#{profileBean.showMyHome}" immediate="true"/></li>
+					    <li><h:commandLink value="Friend Request" action="requested_friends" immediate="true"/></li>
+					     <li><h:commandLink value="Picture" action="album" immediate="true"/></li>
+					     <li><h:commandLink value="Profile" action="#{profileBean.showMyProfile}" immediate="true"/></li>
+					     <li><h:commandLink value="Message" action="#{scrapBean.showMyMessage}" immediate="true"/></li>
+					   <li><h:commandLink value="Search Friend" action="#{searchFriendBean.goToSearchFriend}" immediate="true"/></li>
+					   <li><h:commandLink value="Logout" action="#{profileBean.logOut}" immediate="true"/></li>
+				 </ul>
+			<div class="clr"></div>
+			</div>
+				 
+			         
+      </ui:composition>
+   </body>
+</html>
+

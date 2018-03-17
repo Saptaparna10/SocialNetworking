@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j" 
+	xmlns:rich="http://richfaces.org/rich"
+	>
+
+<ui:composition template="WEB-INF/templetes/second.xhtml">
+	<ui:define name="title">profile</ui:define>
+	<ui:define name="head">
+		<style type="text/css">
+			.firstCol {width:150px;font-weight:bold}
+			.secondCol{width:250px;}
+		</style>
+	</ui:define>
+	<ui:define name="sidebar"></ui:define>
+	<ui:define name="welcome">
+		<img src="profilePics/${sessionScope['logid']}.jpg"/>
+		 <div class="welcome">Welcome ${sessionScope['logname']}</div>
+	</ui:define>
+	<ui:define name="content">
+	    <div class="article">
+			  <div style="width:100%;float:left">
+			  <div class="clr"></div>
+			  		<div style="font-weight: bold;color:green"><h:outputText value="#{friendsBean.message}"/></div>
+			  		<div style="font-weight: bold;color:green"><h:outputText rendered="#{friendsBean.requestedFriendCount>0}" value="#{friendsBean.requestedFriendCount} Friend Request"/></div>
+			  		<div style="font-weight: bold;color:red"><h:outputText rendered="#{friendsBean.requestedFriendCount==0}" value="No Friend request found"/></div>
+			  		<h:panelGrid columns="4">
+			  		<ui:repeat var="r" value="#{friendsBean.requestedFriendList}">
+			  		
+			  			
+			  			<div style="width:550px;background:url(images/flist_bg.jpg) repeat-x center;height:70px;margin-top:5px">
+				  			<h:graphicImage value="profilePics/#{r.email_Id}.jpg" style="width:60px;height:70px;float:left"/>	  			
+				  			<div style="float:left;padding-top:25px;padding-left:30px;">
+				  				<h:commandLink value="#{r.first_Name} #{r.last_Name}" style="width:200px;;display:block;float:left;font-weight:bold;color:black;font-style:italic;font-size:10pt;text-decoration:none;" action="#{searchFriendBean.showFriendProfile(r.email_Id,r.first_Name,r.last_Name)}"/>
+				  				 
+				  				<h:commandLink style="float:right;padding-left:10px;background:url(images/accept.gif) no-repeat center;width:88px;height:29px;display:block" action="#{friendsBean.acceptFriendRequest(r.email_Id)}"/>
+				  				<h:commandLink style="float:right;padding-left:10px;background:url(images/reject.gif) no-repeat center;width:88px;height:29px;display:block" action="#{friendsBean.rejectFriendRequest(r.email_Id)}"/>
+				  				
+				  			</div>
+				  		</div>  
+			  			
+			  			
+				  	</ui:repeat>			
+				  	</h:panelGrid>	  	
+			    <div class="clr"></div>
+			  </div>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>
+
+

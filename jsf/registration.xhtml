@@ -1,0 +1,105 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j" 
+	xmlns:rich="http://richfaces.org/rich"
+	>
+
+<ui:composition template="WEB-INF/templetes/first.xhtml">
+	<ui:define name="content">
+	    <div class="article">
+			  <div style="width:300px;float:right">
+			  <h2><span>Registration</span></h2>
+			  <div class="clr"></div>
+			  		<h:form id="frm">
+			  			<h:panelGrid width="300" columns="2">
+			  				<h:outputText value="*First Name:"/>
+			  				<h:inputText id="fname" value="#{registrationBean.registration.first_Name}" required="true" requiredMessage="First Name can not be blank"/>
+			  				
+			  				<h:outputText value=""/>
+			  				<h:message for="fname"/>
+			  				
+			  				<h:outputText value="*Last Name:"/>
+			  				<h:inputText id="lname" value="#{registrationBean.registration.last_Name}" required="true" requiredMessage="Last Name can not be blank"/>
+			  				
+			  				<h:outputText value=""/>
+			  				<h:message for="lname"/>
+			  				
+			  				<h:outputText value="*Email Id:"/>
+			  				<h:inputText id="eid" value="#{registrationBean.registration.email_Id}" required="true" requiredMessage="Email can not be blank" validatorMessage="Not a Valid Email Id">
+			  					<f:validateRegex pattern="^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$"></f:validateRegex>
+			  				</h:inputText>
+			  				
+			  				
+			  				<h:outputText value=""/>
+			  				<h:message for="eid"/>
+			  				
+			  				
+			  				
+			  				<h:outputText value="*Password:"/>
+			  				<h:inputSecret id="pwd" value="#{registrationBean.registration.password}" required="true" requiredMessage="Password can not be blank"/>
+			  				
+			  				<h:outputText value=""/>
+			  				<h:message for="pwd"/>
+			  				
+			  				
+			  				
+			  				<h:outputText value=""/>
+			  				<h:message for="repass"/>
+			  				
+			  				<h:outputText value="Gender:" />
+			  				<h:selectOneRadio id="gen" value="#{registrationBean.registration.gender}" required="true" requiredMessage="You have to select Gender">		  				
+			  					<f:selectItem  itemLabel="Male" itemValue="Male" />
+			  					<f:selectItem   itemLabel="Female" itemValue="Female"/>
+			  				</h:selectOneRadio>
+			  				
+			  				<h:outputText value=""/>
+			  				<h:message for="gen"/>
+			  				
+			  				<h:outputText value="Date Of Birth"/>
+			  				<rich:calendar id="dob" value="#{registrationBean.registration.dob}" datePattern="dd/MM/yyyy" required="true" requiredMessage="Specify your birthdate">
+			  					
+			  				</rich:calendar>
+			  				
+			  				<h:outputText value=""/>
+			  				<h:message for="dob"/>
+			  				
+			  				<h:outputText value="*Security Question:"/>
+			  				<h:inputText id="sec_qsn" value="#{registrationBean.registration.sec_Qsn}" required="true" requiredMessage="Security Question can not be blank"/>
+			  				
+			  				<h:outputText value=""/>
+			  				<h:message for="sec_qsn"/>
+			  				
+			  				<h:outputText value="*Security Answer:"/>
+			  				<h:inputText id="sec_ans" value="#{registrationBean.registration.sec_Ans}" required="true" requiredMessage="Security Answer can not be blank"/>
+			  				
+			  				<h:outputText value=""/>
+			  				<h:message for="sec_ans"/>
+			  				
+			  				
+			  				<h:commandButton id="btnReg" value="Submit" action="#{registrationBean.registerUser}"/>
+			  				<h:outputText value=""/>
+			  			</h:panelGrid>		  			
+			  </h:form> 
+			  <h:panelGroup layout="block" id="msgBox" rendered="#{registrationBean.showMsgBox}">
+					<div id="dialog" title="Success" style="text-align: center">
+						<p style="color:green;font-weight: bold;font-size:11pt">You are successfully registered...</p>
+						<a href="login.xhtml">Login Now</a>
+					</div>
+			  </h:panelGroup> 
+			  <div class="clr"></div>
+			  </div>
+			</div>
+	</ui:define>
+</ui:composition>
+</html>
+ 
+ 
+ 
+ 
+ 
+ 
